@@ -3,35 +3,31 @@ import Deleteblock from "./Deleteblock";
 import PriorityDisplay from "./PriorityDisplay";
 import ProgressBar from "./ProgressBar";
 import StatusDisplay from "./StatusDisplay";
+import { TypeTicketCreate } from "../{types}/alltypes";
 
-const TicketCard = () => {
+const TicketCard = ({ ticket }: TypeTicketCreate) => {
   return (
     <div className="flex flex-col bg-card hover:bg-card-hover rounded-md shadow-lg p-3 m-2">
       <div className="flex mb-3">
-        <PriorityDisplay />
+        <PriorityDisplay priority={ticket.priority} />
         <div className="ml-auto">
           <Deleteblock />
         </div>
       </div>
-      <h4>Ticket Title</h4>
+      <h4>{ticket.title}</h4>
       <hr className="h-px border-0 bg-page mb-2" />
-      <p className="whitespace-pre-wrap">
-        {" "}
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse adipisci
-        quidem natus voluptatum enim velit culpa veniam maxime quo quae optio
-        ipsum ipsa ut, asperiores provident? Qui sit aut aliquam!
-      </p>
+      <p className="whitespace-pre-wrap">{ticket.description}</p>
 
       <div className="flex-grow"></div>
 
       <div className="flex mt-2">
         <div className="flex flex-col ">
-            <p>08:31 22/12/2002</p>
-          <ProgressBar />
+          <p>{ticket.createdAt?.slice(0, 10)}</p>
+          <ProgressBar progress={ticket.progress} />
         </div>
 
         <div className="ml-auto flex items-end">
-            <StatusDisplay />
+          <StatusDisplay status={ticket.status} />
         </div>
       </div>
     </div>

@@ -1,8 +1,9 @@
-import { TypeParams } from "@/app/{types}/alltypes";
+import TicketForm from "@/app/{components}/TicketForm";
+
 import React from "react";
 
-const TicketsPage = ({ params }:TypeParams) => {
-  return <div>TicketsPage {`${params.id}`}</div>;
+const TicketsPage = () => {
+  return <TicketForm/>;
 };
 
 export default TicketsPage;
