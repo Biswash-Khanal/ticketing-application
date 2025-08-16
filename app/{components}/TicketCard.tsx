@@ -4,6 +4,7 @@ import PriorityDisplay from "./PriorityDisplay";
 import ProgressBar from "./ProgressBar";
 import StatusDisplay from "./StatusDisplay";
 import { TypeTicketCreate } from "../{types}/alltypes";
+import Link from "next/link";
 
 const TicketCard = ({ ticket }: TypeTicketCreate) => {
   return (
@@ -11,9 +12,10 @@ const TicketCard = ({ ticket }: TypeTicketCreate) => {
       <div className="flex mb-3">
         <PriorityDisplay priority={ticket.priority} />
         <div className="ml-auto">
-          <Deleteblock />
+          <Deleteblock id={ticket._id!} />
         </div>
       </div>
+      <Link href={`/TicketPage/${ticket._id}`} style={{display:"contents"}}>
       <h4>{ticket.title}</h4>
       <hr className="h-px border-0 bg-page mb-2" />
       <p className="whitespace-pre-wrap">{ticket.description}</p>
@@ -30,6 +32,7 @@ const TicketCard = ({ ticket }: TypeTicketCreate) => {
           <StatusDisplay status={ticket.status} />
         </div>
       </div>
+      </Link>
     </div>
   );
 };
